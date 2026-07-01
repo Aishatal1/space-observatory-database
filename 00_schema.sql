@@ -159,31 +159,3 @@ CREATE INDEX idx_orbital_satellite ON astronomy.ORBITAL_RELATIONSHIPS(satellite_
 CREATE INDEX idx_spacecraft_agency ON agencies.SPACECRAFT(agency_id);
 CREATE INDEX idx_missions_agency ON agencies.SPACE_MISSIONS(agency_id);
 CREATE INDEX idx_missions_spacecraft ON agencies.SPACE_MISSIONS(spacecraft_id);
-
--- ============================================
--- ADDITIONAL NOTES:
--- ============================================
-/*
-1. This SQL code is compatible with MySQL/MariaDB. For PostgreSQL, replace:
-   - DECIMAL with NUMERIC
-   - BOOLEAN with BOOLEAN (same)
-   - Remove USE statements and use SET search_path instead
-
-2. Adjust data types as needed for your specific requirements
-
-3. Consider adding ON DELETE CASCADE clauses if you want automatic deletion
-   of related records
-
-4. You may want to add CHECK constraints for:
-   - discovered_year (should be > 0 and <= current year)
-   - body_mass_kg (should be > 0)
-   - craft_mass_kg (should be > 0)
-   - status fields (specific values)
-
-5. Consider adding NOT NULL constraints where appropriate based on your data requirements
-*/
-
--- Example of adding a CHECK constraint:
--- ALTER TABLE astronomy.ASTRONAUTS 
--- ADD CONSTRAINT chk_astronaut_status 
--- CHECK (status IN ('Active', 'Retired', 'Deceased', 'In Training'));
